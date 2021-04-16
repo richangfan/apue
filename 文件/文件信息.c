@@ -2,6 +2,8 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
+void print_file_type(int mode);
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -23,6 +25,7 @@ int main(int argc, char *argv[])
     printf("状态更改时间是%ld\n", buf.st_ctim.tv_sec);
     printf("硬链接数是%ld\n", buf.st_nlink);
     printf("八进制文件权限是%o\n", buf.st_mode);
+    print_file_type(buf.st_mode);
     printf("%ld\n", buf.st_blksize);
     printf("%ld\n", buf.st_dev);
     printf("%ld\n", buf.st_rdev);
@@ -84,4 +87,43 @@ void error_exit()
         break;
     }
     exit(1);
+}
+
+void print_file_type(int mode)
+{
+    char *ft;
+    if (S_ISREG(mode))
+    {
+        ft = "regular";
+    }
+    else if (S_ISDIR(mode))
+    {
+        ft = "directory";
+    }
+    else if (S_ISBLK(mode))
+    {
+        ft = "block";
+    }
+    else if (S_ISCHR(mode))
+    {
+        ft = "character";
+    }
+    else if (S_ISFIFO(mode))
+    {
+        ft = "FIFO";
+    }
+    else if (S_ISSOCK(mode))
+    {
+        ft = "socket";
+    }
+    else if (S_ISLNK(mode))
+    {
+        ft = "link";
+    }
+    else
+    {
+        ft = "未知类型";
+    }
+    printf("文件类型是%s\n", ft);
+    return;
 }
