@@ -1,4 +1,3 @@
-#include "../header.h"
 #include <pthread.h>
 #include <unistd.h>
 
@@ -14,7 +13,7 @@ int main(int argc, char *argv[])
     int error;
     error = pthread_create(&tid, NULL, start_thread, NULL);
     if (error != 0)
-        error_exit("创建线程出错");
+        printf("创建线程出错"), exit(1);
     sleep(1);
     return 0;
 }

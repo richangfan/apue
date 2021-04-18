@@ -1,8 +1,11 @@
-#include "../common.h"
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 
 void print_file_type(int mode);
+void error_exit();
 
 int main(int argc, char *argv[])
 {

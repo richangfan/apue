@@ -1,4 +1,5 @@
-#include "../header.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
 
@@ -32,15 +33,15 @@ int main(int argc, char *argv[])
     int error;
     error = pthread_create(&tid, NULL, start_thread, (void *)&argc);
     if (error != 0)
-        error_exit("创建线程出错");
+        printf("创建线程出错"), exit(1);
     if (argc != 1)
     {
         error = pthread_cancel(tid);
         if (error != 0)
-            error_exit("cancel出错");
+            printf("cancel出错"), exit(1);
     }
     error = pthread_join(tid, NULL);
     if (error != 0)
-        error_exit("join出错");
+        printf("join出错"), exit(1);
     return 0;
 }
