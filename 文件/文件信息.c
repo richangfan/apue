@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         printf("打开文件失败\n"), error_exit();
     struct stat buf;
     if (fstat(fd, &buf) != 0)
-        printf("fstat\n"), error_exit();
+        printf("fstat出错\n"), error_exit();
     printf("所属用户是%d\n", buf.st_uid);
     printf("所属用户组是%d\n", buf.st_gid);
     printf("文件体积是%ld字节\n", buf.st_size);
