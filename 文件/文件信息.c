@@ -125,7 +125,13 @@ void print_file_type(int mode)
         ft = "未知类型";
     }
     printf("文件类型是%s\n", ft);
-    printf("设置用户ID位是%d\n", S_ISUID & mode);
-    printf("设置组ID位是%d\n", S_ISGID & mode);
+    if (S_ISUID & mode)
+        printf("保存设置用户ID\n");
+    else
+        printf("不保存设置用户ID\n");
+    if (S_ISGID & mode)
+        printf("保存设置组ID\n");
+    else
+        printf("不保存设置组ID\n");
     return;
 }
