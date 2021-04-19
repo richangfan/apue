@@ -24,5 +24,7 @@ int main(int argc, char *argv[])
         printf("读取文件失败\n"), exit(1);
     printf("%s", buff);
     unlink(pathname);
+    close(fd);
+    close(fd2);
     exit(0);
 }

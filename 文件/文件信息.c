@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     printf("%ld\n", buf.st_mtim.tv_nsec);
     printf("%ld\n", buf.st_ctim.tv_nsec);
     printf("%ld\n", buf.st_atim.tv_nsec);
+    close(fd);
     exit(0);
 }
 

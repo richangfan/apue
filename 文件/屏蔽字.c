@@ -22,6 +22,7 @@ void create_and_print(const char *pathname, const int mode)
     printf("八进制文件权限是%o\n", buf.st_mode);
     if (unlink(pathname) != 0)
         error_exit("删除文件失败");
+    close(fd);
 }
 
 int main(int argc, char *argv[])
