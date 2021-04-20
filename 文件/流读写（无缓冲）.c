@@ -12,7 +12,7 @@ void error_exit(char *msg)
     exit(1);
 }
 
-void test_put(const char *pathname, const char *s)
+void test_putc(const char *pathname, const char *s)
 {
     int len;
     fp = fopen(pathname, "w+");
@@ -34,7 +34,7 @@ void test_put(const char *pathname, const char *s)
         error_exit("关闭出错");
 }
 
-void test_get(const char *pathname)
+void test_getc(const char *pathname)
 {
     int c;
     fp = fopen(pathname, "r");
@@ -57,8 +57,8 @@ void test_get(const char *pathname)
 int main(int argc, char *argv[])
 {
     const char *pathname = "temp";
-    test_put(pathname, "hello, world!");
-    test_get(pathname);
+    test_putc(pathname, "hello, world!");
+    test_getc(pathname);
     if (unlink(pathname) != 0)
         error_exit("删除出错");
     exit(0);
