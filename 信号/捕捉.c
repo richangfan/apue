@@ -13,7 +13,7 @@ void handle(int sig)
     if (sig == SIGINT)
         printf("捕捉到了INT信号\n");
     else
-        printf("捕捉到了未知信号\n");
+        printf("捕捉到了未知信号%d\n", sig);
     exit(0);
 }
 
